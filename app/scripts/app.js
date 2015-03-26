@@ -19,7 +19,12 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve:{
+          problems: function($http){
+            return $http.get('http://localhost:3000/problems');
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',
