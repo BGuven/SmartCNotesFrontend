@@ -21,6 +21,13 @@ angular.module('smartCnotesFrontendApp')
         });
     };
 
+    $scope.$watch ('selectedProblem', function(newVal, oldVal){
+      console.log(newVal, oldVal);
+      if (newVal && newVal.originalObject){
+        $scope.appendPlan(newVal.originalObject.id);
+      }
+    });
+
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

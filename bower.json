@@ -8,7 +8,8 @@
     "angular-resource": "^1.3.0",
     "angular-route": "^1.3.0",
     "angular-sanitize": "^1.3.0",
-    "ui-router": "~0.2.13"
+    "ui-router": "~0.2.13",
+    "angucomplete": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"

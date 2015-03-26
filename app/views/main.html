@@ -6,14 +6,23 @@
   <!--</p>-->
 
   <div class="search-box">
-    <input ng-model="searchProblem" class="form-control">
+    <!--<input ng-model="searchProblem" class="form-control">-->
+    <angucomplete
+      id="plans"
+      pause="100"
+      placeholder="Search Saved Plans"
+      selectedobject="selectedProblem"
+      localdata="problems"
+      titlefield="name"
+      inputclass="form-control form-control-small"
+      searchfields="name"
+      />
     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
   </div>
-
 <!--</div>-->
   <br>
   <ul class="list-inline">
-    <li ng-repeat="problem in problems | filter: searchProblem" ng-click="appendPlan(problem.id)" >
+    <li ng-repeat="problem in problems | filter: searchProblem" ng-click="appendPlan(problem.id)">
       {{problem.name}}
     </li>
   </ul>
