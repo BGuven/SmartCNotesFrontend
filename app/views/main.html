@@ -5,16 +5,14 @@
     <!--Always a pleasure scaffolding your apps.-->
   <!--</p>-->
 
-  <button type="button" class="btn btn-default">
-    <input ng-model="searchProblem">
+    <input ng-model="searchProblem" class="form-control">
     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  </button>
 <!--</div>-->
   <br>
-  Saved Plans:
   <ul class="list-inline">
     <li ng-repeat="problem in problems | filter: searchProblem">
       {{problem.name}}
     </li>
   </ul>
+  <textarea cols="1000" class="form-control ng-scope" style="margin: 0px -1px 0px 0px; width: 700px; height: 411px;"></textarea>
 </div>
