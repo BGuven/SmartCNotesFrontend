@@ -89,3 +89,13 @@ body {
     border-bottom: 0;
   }
 }
+
+.search-box {
+  position: relative;
+  span {
+    position: absolute;
+    right: 1em;
+    line-height: 1.6em;
+    font-size: 1.4em;
+  }
+}

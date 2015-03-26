@@ -9,14 +9,27 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($httpBackend,$controller, $rootScope) {
     scope = $rootScope.$new();
+    $httpBackend.expectGET('http://localhost:3000/problems/1').respond({});
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      problems: {data: [{dx:'dx test 1', tx:'tx test 1'},{dx:'dx test 2', tx:'tx test 2'}]}
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
     expect(scope.awesomeThings.length).toBe(3);
+  });
+
+  it('should assign the data to the problems in the scope', function(){
+    expect(scope.problems).toEqual([{dx:'dx test 1', tx:'tx test 1'},{dx:'dx test 2', tx:'tx test 2'}]);
+  });
+
+  describe ('appendPlan()', function () {
+    it('should return the valid problem the user clicks on', function(){
+      scope.appendPlan(1);
+      expect(scope.pickedPlan).toEqual({});
+    });
   });
 });
