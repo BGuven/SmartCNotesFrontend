@@ -1,0 +1,6 @@
+<ul>
+  <li ng-repeat="note in notes">
+    <a ng-href="#/notes/{{note.id}}">{{note.patient_name}} - {{note.name}}</a>
+  </li>
+</ul>
+<a type="submit" class="btn btn-default" href="#/">New Note</a>

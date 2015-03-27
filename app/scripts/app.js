@@ -14,7 +14,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'angucomplete'
+    'angucomplete',
+    'addTemplatePlan',
+    'ngDialog'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -22,6 +24,28 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve:{
+          problems: function($http){
+            return $http.get('http://localhost:3000/problems');
+          }
+        }
+      })
+      .when('/notes', {
+        templateUrl: 'views/notes.html',
+        controller: 'NotesCtrl',
+        resolve:{
+          notes: function($http){
+            return $http.get('http://localhost:3000/notes');
+          }
+        }
+      })
+      .when('/notes/:note_id', {
+        templateUrl: 'views/notes_show.html',
+        controller: 'NoteShowCtrl',
+        resolve:{
+          note: function($http, $route){
+            var url = 'http://localhost:3000/notes/' + $route.current.params.note_id;
+            return $http.get(url);
+          },
           problems: function($http){
             return $http.get('http://localhost:3000/problems');
           }

@@ -26,6 +26,7 @@
       {{problem.name}}
     </li>
   </ul>
-  <pre>{{pickedPlan | json}}</pre>
-  <textarea cols="1000" class="form-control ng-scope" style="margin: 0px -1px 0px 0px; width: 700px; height: 411px;" add-text=""></textarea>
+  <!--<add-template-plan plan="{{pickedPlan}}" text=""></add-template-plan>-->
+  <a type="submit" class="btn btn-default" ng-click="saveInput()" ng-if="note.content">Save Note</a>
+  <textarea ng-model="note.content" cols="1000" class="form-control ng-scope" style="margin: 0px -1px 0px 0px; width: 700px; height: 411px;" add-text=""></textarea>
 </div>

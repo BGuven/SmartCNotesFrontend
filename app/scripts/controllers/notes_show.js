@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name smartCnotesFrontendApp.controller:MainCtrl
+ * @name smartCnotesFrontendApp.controller:NotesCtrl
  * @description
- * # MainCtrl
+ * # NoteShowCtrl
  * Controller of the smartCnotesFrontendApp
  */
 angular.module('smartCnotesFrontendApp')
-  .controller('MainCtrl', function ($scope, problems, $http, $rootScope, ngDialog) {
+  .controller('NoteShowCtrl', function ($scope,$http, note, problems, ngDialog,$rootScope, $routeParams) {
     $scope.problems = problems.data;
-    $scope.note = {};
+    $scope.note = note.data;
 
     var createTemplate = function(problem, spacing){
       return spacing + problem.name + " Cause -> " + problem.cause_desc + "\n" +
@@ -18,7 +18,6 @@ angular.module('smartCnotesFrontendApp')
         spacing + problem.name + " tx -> " + problem.tx + "\n" +
         spacing + problem.name + " prognosis -> " + problem.prognosis + "\n \n";
     };
-
     $scope.appendPlan = function(id){
       var api = 'http://localhost:3000/problems/' + id;
       $http.get(api)
@@ -55,23 +54,14 @@ angular.module('smartCnotesFrontendApp')
       }
     });
 
-    $scope.saveNote = function(name, patientName){
-      $scope.note.name = name;
-      $scope.note.patient_name = patientName;
-      $http.post('http://localhost:3000/notes', {note: $scope.note}).
+    $scope.updateNote = function(){
+      var url = 'http://localhost:3000/notes/' + $routeParams.note_id;
+      $http.put(url, {note: $scope.note}).
         success(function(data) {
           console.log(data);
         }).
         error(function(data) {
         });
-    };
-
-    $scope.saveInput = function(){
-      ngDialog.open({
-        template: '<input class="form-control" placeholder="Name your note" ng-model="name"/> <input class="form-control" placeholder="Patient Name" ng-model="patientName"/> <button class="btn btn-default" ng-if="name && patientName" ng-click="saveNote(name, patientName); closeThisDialog()">Save Note</button>',
-        plain: true,
-        scope: $scope
-      });
     };
 
     $scope.awesomeThings = [

@@ -1,0 +1,22 @@
+<div class="search-box">
+  <angucomplete
+    id="plans"
+    pause="100"
+    placeholder="Search Saved Plans"
+    selectedobject="selectedProblem"
+    localdata="problems"
+    titlefield="name"
+    inputclass="form-control form-control-small"
+    searchfields="name"
+    />
+  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+</div>
+<br>
+<ul class="list-inline">
+  <li ng-repeat="problem in problems | filter: searchProblem" ng-click="appendPlan(problem.id)">
+    {{problem.name}}
+  </li>
+</ul>
+<a type="submit" class="btn btn-default" ng-click="updateNote()" ng-if="note.content">Update Note</a>
+<textarea ng-model="note.content" cols="1000" class="form-control ng-scope" style="margin: 0px -1px 0px 0px; width: 700px; height: 411px;" add-text=""></textarea>
+</div>

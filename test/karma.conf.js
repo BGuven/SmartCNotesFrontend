@@ -28,6 +28,8 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/ui-router/release/angular-ui-router.js',
       'bower_components/angucomplete/angucomplete.js',
+      'bower_components/underscore/underscore.js',
+      'bower_components/ngDialog/js/ngDialog.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
